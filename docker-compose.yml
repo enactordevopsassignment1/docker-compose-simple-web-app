@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mysql-host:
+    image: mysql:5.7
+    volumes:
+      - ./simple_db.sql:/docker-entrypoint-initdb.d/simple_db.sql
+#    ports:
+#      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: simple_db
+      MYSQL_USER: defaultUser
+      MYSQL_PASSWORD: defaultUserPswd
+
+  simple-web-app:
+    image: madumalt/simple_web_app:latest
+    ports:
+      - 9090:8080
+    depends_on:
+      - mysql-host
