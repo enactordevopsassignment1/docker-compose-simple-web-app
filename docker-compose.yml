@@ -16,6 +16,6 @@ services:
   simple-web-app:
     image: madumalt/simple_web_app:latest
     ports:
-      - 9090:8080
+      - 8080:8080
     depends_on:
       - mysql-host
